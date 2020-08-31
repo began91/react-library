@@ -20,10 +20,26 @@ const Bookshelf = () => {
     const addToLibrary = book => {
         setLibrary([...library, book]);
     }
+
+    const handleDelete = event => {
+        const indexOfBook = library.findIndex(book => {
+            console.log(book.id);
+            console.log(event.target.parentElement.parentElement.id);
+            return book.id === event.target.parentElement.parentElement.id;
+        });
+        if (indexOfBook!==-1) {
+            let newLibrary = [...library];
+            newLibrary.splice(indexOfBook,1);
+            setLibrary(newLibrary);
+        }
+    }
     
     return (
         <div id="bookshelf">
-            {library.map(book => (<Book book={book} key={book.title}/>))}
+            {library.map((book, i) => {
+                book.id='book-'+i;
+                return (<Book book={book} key={book.id} onDelete={handleDelete}/>)
+            })}
             <AddBook addBook={addToLibrary}/>
         </div>
     )

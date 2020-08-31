@@ -6,10 +6,11 @@ const Book = props => {
     const [read, setRead] = useState(book.read);
 
     return (
-        <div className="book">
+        <div className="book" id={book.id}>
             <div className="cover-card" style={{backgroundImage: `url(${book.picUrl})`}}>
             </div>
             <div className="info-card">
+                <button className="delete-book" onClick={props.onDelete}>X</button>
                 <h3>{book.title}</h3>
                 <h4>{book.author}</h4>
                 <p>{book.pages} pages</p>

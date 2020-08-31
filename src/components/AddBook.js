@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AddBook.css';
-import { Formik, Form, Field, resetForm } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
 const AddBook = props => {
     const [flipped,setFlipped] = useState(false);
@@ -9,7 +9,7 @@ const AddBook = props => {
         setFlipped(true);
     }
 
-    const handleFormik = (values, {setSubmitting, resetForm }) => {
+    const handleFormik = (values, {setSubmitting, resetForm}) => {
         props.addBook(values);
         resetForm();
         setSubmitting(false);
